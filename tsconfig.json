@@ -5,9 +5,7 @@
     "moduleResolution": "bundler",
     "module": "ES2015",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   },
   "include": [

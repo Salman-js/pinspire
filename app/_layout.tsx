@@ -6,14 +6,14 @@ import {
   ThemeProvider,
 } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { ErrorBoundary, Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React, { Children, useEffect } from 'react';
 import 'react-native-reanimated';
 import '../global.css';
 import { NAV_THEME } from '@/lib/constants';
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import { setAndroidNavigationBar } from '@/lib/android-navigation-bar';
 import { useColorScheme } from '@/lib/useColorScheme';
 
@@ -60,9 +60,18 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
       <StatusBar style={isDarkColorScheme ? 'light' : 'dark'} />
-      <Stack initialRouteName='(auth)'>
-        <Stack.Screen name='(auth)' options={{ headerShown: false }} />
-        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+      <Stack
+        screenOptions={{
+          animation: 'slide_from_right',
+          headerShown: false,
+        }}
+        layout={({ children }) => (
+          <View className='bg-background flex-1'>{children}</View>
+        )}
+      >
+        <Stack.Screen name='index' />
+        <Stack.Screen name='(auth)' />
+        <Stack.Screen name='(tabs)' />
         <Stack.Screen name='+not-found' />
       </Stack>
     </ThemeProvider>
