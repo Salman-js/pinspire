@@ -34,13 +34,13 @@ export default function Index() {
         <View className='w-full flex flex-col gap-3'>
           <Button
             className='w-full rounded-full bg-blue-400 py-4'
-            onPress={() => router.push('/(auth)/sign-up')}
+            onPress={() => router.navigate('/(auth)/sign-up')}
           >
             <Text className='text-white font-bold text-xl'>Sign up</Text>
           </Button>
           <Button
             className='w-full rounded-full bg-muted py-4'
-            onPress={() => router.push('/(auth)/sign-in')}
+            onPress={() => router.navigate('/(tabs)')}
           >
             <Text className='text-secondary-foreground font-bold text-xl'>
               Login

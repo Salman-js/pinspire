@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function Index() {
   return (
     <SafeAreaView>
-      <Text className='text-white'>Sign in</Text>
+      <Text className='text-white'>Search</Text>
     </SafeAreaView>
   );
 }

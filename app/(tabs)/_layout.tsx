@@ -1,8 +1,7 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
-
-import { IconSymbol } from '@/components/ui/IconSymbol';
+import { Platform, Pressable } from 'react-native';
+import { Feather, Octicons } from '@expo/vector-icons';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
@@ -15,10 +14,10 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
+        tabBarShowLabel: false,
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
           },
           default: {},
@@ -30,7 +29,35 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name='house.fill' color={color} />
+            <Octicons size={25} name='home' color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name='search'
+        options={{
+          title: 'Search',
+          tabBarIcon: ({ color }) => (
+            <Feather size={28} name='search' color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name='new'
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Feather size={28} name='plus' color={color} />
+          ),
+          tabBarButton: (props) => (
+            <Pressable
+              {...props}
+              onPress={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
+            >
+              {props.children}
+            </Pressable>
           ),
         }}
       />
