@@ -33,16 +33,18 @@ export default function Index() {
         </Text>
         <View className='w-full flex flex-col gap-3'>
           <Button
-            className='w-full rounded-full bg-blue-400 py-4'
+            className='w-full rounded-full bg-blue-400 py-2'
             onPress={() => router.navigate('/(auth)/sign-up')}
           >
-            <Text className='text-white font-bold text-xl'>Sign up</Text>
+            <Text className='text-white font-bold text-xl leading-6'>
+              Sign up
+            </Text>
           </Button>
           <Button
-            className='w-full rounded-full bg-muted py-4'
+            className='w-full rounded-full bg-muted py-2'
             onPress={() => router.navigate('/(tabs)')}
           >
-            <Text className='text-secondary-foreground font-bold text-xl'>
+            <Text className='text-secondary-foreground font-bold text-xl leading-6'>
               Login
             </Text>
           </Button>

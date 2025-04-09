@@ -1,3 +1,4 @@
+import BoardPins from '@/features/home/components/BoardPins';
 import { NAV_THEME } from '@/lib/constants';
 import { useColorScheme } from '@/lib/useColorScheme';
 import { cn } from '@/lib/utils';
@@ -9,17 +10,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-  TabView,
-  SceneMap,
-  TabBar,
-  TabBarItem,
-  TabBarIndicator,
-} from 'react-native-tab-view';
+import { TabView, SceneMap, TabBar, TabBarItem } from 'react-native-tab-view';
 import tw from 'twrnc';
 
 export default function HomeScreen() {
-  const layout = useWindowDimensions();
   const tabOptions = [
     {
       key: 'for you',
@@ -39,8 +33,8 @@ export default function HomeScreen() {
         renderScene={SceneMap(
           tabOptions.reduce((acc, tab) => {
             acc[tab.key] = () => (
-              <View className='flex-1 items-center justify-center'>
-                <Text className='text-foreground'>{tab.title} Content</Text>
+              <View className='w-full h-full flex flex-col items-center justify-center'>
+                <BoardPins boardId='1234' />
               </View>
             );
             return acc;
@@ -54,14 +48,18 @@ export default function HomeScreen() {
                 ? NAV_THEME.dark.text
                 : NAV_THEME.light.text
             }
+            inactiveColor={colorScheme === 'dark' ? '#ffffff81' : '#00000086'}
             indicatorContainerStyle={tw.style('rounded-full', {
               backgroundColor: 'transparent',
             })}
-            renderTabBarItem={(props) => (
-              <TabBarItem {...props} style={tw.style('', {})} />
+            renderTabBarItem={({ key, ...props }) => (
+              <TabBarItem {...props} key={key} style={tw.style('', {})} />
             )}
             indicatorStyle={tw.style('rounded-full', {
-              backgroundColor: NAV_THEME.dark.text,
+              backgroundColor:
+                colorScheme === 'dark'
+                  ? NAV_THEME.light.border
+                  : NAV_THEME.dark.border,
               height: 2.5,
             })}
             style={tw.style('', {
