@@ -62,7 +62,7 @@ export default function HomeScreen() {
                   : NAV_THEME.dark.border,
               height: 2.5,
             })}
-            style={tw.style('', {
+            style={tw.style('mb-2', {
               backgroundColor: 'transparent',
             })}
             tabStyle={tw.style('w-auto')}
