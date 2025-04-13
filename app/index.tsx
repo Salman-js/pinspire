@@ -42,7 +42,7 @@ export default function Index() {
           </Button>
           <Button
             className='w-full rounded-full bg-muted py-2'
-            onPress={() => router.navigate('/(tabs)')}
+            onPress={() => router.navigate('/(tabs)/home')}
           >
             <Text className='text-secondary-foreground font-bold text-xl leading-6'>
               Login
