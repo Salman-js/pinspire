@@ -1,11 +1,12 @@
 import { Image } from 'expo-image';
 import React, { useRef } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { IMG } from '../interface/pin.interface';
+import { IMG } from '../../interface/pin.interface';
 import tw from 'twrnc';
 import { Feather } from '@expo/vector-icons';
 import { NAV_THEME } from '@/lib/constants';
 import ActionSheet, { ActionSheetRef } from 'react-native-actions-sheet';
+import { useRouter } from 'expo-router';
 
 type PinItemProps = {
   item: IMG;
@@ -13,6 +14,7 @@ type PinItemProps = {
 };
 
 const PinItem: React.FC<PinItemProps> = ({ item, colorScheme }) => {
+  const router = useRouter();
   const shareSheetRef = useRef<ActionSheetRef>(null);
   const handleOpenShareSheet = () => {
     shareSheetRef.current?.show();
@@ -22,7 +24,18 @@ const PinItem: React.FC<PinItemProps> = ({ item, colorScheme }) => {
   };
   return (
     <>
-      <TouchableOpacity className='p-[2px] pb-0'>
+      <TouchableOpacity
+        className='p-[2px] pb-0'
+        onPress={() =>
+          router.navigate({
+            pathname: '/(tabs)/home/pin',
+            params: {
+              id: item.id,
+              url: item.url,
+            },
+          })
+        }
+      >
         <Image
           source={{ uri: item.url }}
           style={[

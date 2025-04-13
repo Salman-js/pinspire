@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IMG, IPin } from '../interface/pin.interface';
+import { IMG, IPin } from '../../interface/pin.interface';
 import { MasonryFlashList } from '@shopify/flash-list';
 import { Dimensions, Image as NativeImage } from 'react-native';
 import { useColorScheme } from '@/lib/useColorScheme';

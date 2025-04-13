@@ -1,14 +1,8 @@
-import BoardPins from '@/features/home/components/BoardPins';
+import BoardPins from '@/features/home/components/pin/BoardPins';
 import { NAV_THEME } from '@/lib/constants';
 import { useColorScheme } from '@/lib/useColorScheme';
-import { cn } from '@/lib/utils';
-import React, { useMemo, useState } from 'react';
-import {
-  View,
-  useWindowDimensions,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import React, { useState } from 'react';
+import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TabView, SceneMap, TabBar, TabBarItem } from 'react-native-tab-view';
 import tw from 'twrnc';
