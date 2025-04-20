@@ -11,13 +11,12 @@ import { sampleImages } from '@/features/auth/constants/auth.constants';
 import PinActions from '@/features/home/components/pin/PinActions';
 
 export default function PinScreen() {
-  const { url, id } = useLocalSearchParams<{
-    id?: string;
-    url: string;
+  const { pinId: id } = useLocalSearchParams<{
+    pinId: string;
   }>();
-  const { screenWidth, height, loading: sizeLoading } = useImageSize(url);
-  const pins = sampleImages.map((img) => ({ url: img }));
-  useEffect(() => {}, []);
+  const { screenWidth, height, loading: sizeLoading } = useImageSize(id);
+  const pins = sampleImages.map((img) => ({ url: img, id: img }));
+  const url = id;
   return (
     <SafeAreaView className='flex-1'>
       <ScrollView className='w-full'>

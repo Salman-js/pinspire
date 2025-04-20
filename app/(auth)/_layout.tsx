@@ -6,6 +6,7 @@ const Layout = () => {
     <Stack
       screenOptions={{
         headerShown: false,
+        animation: 'flip',
       }}
     >
       <Stack.Screen name='sign-in' />

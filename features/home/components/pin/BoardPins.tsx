@@ -8,7 +8,7 @@ type BoardPinsProps = {
 };
 
 const BoardPins: React.FC<BoardPinsProps> = ({ boardId }) => {
-  const pins = sampleImages.map((img) => ({ url: img }));
+  const pins = sampleImages.map((img) => ({ url: img, id: img }));
   return (
     <View className='w-full h-full'>
       <PinsGrid pins={pins} />

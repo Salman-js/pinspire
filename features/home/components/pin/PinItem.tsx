@@ -27,11 +27,10 @@ const PinItem: React.FC<PinItemProps> = ({ item, colorScheme }) => {
       <TouchableOpacity
         className='p-[2px] pb-0'
         onPress={() =>
-          router.navigate({
-            pathname: '/(tabs)/home/pin',
+          router.push({
+            pathname: `/(protected)/(tabs)/home/pin/[pinId]`,
             params: {
-              id: item.id,
-              url: item.url,
+              pinId: item.id || '',
             },
           })
         }
